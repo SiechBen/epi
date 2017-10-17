@@ -1,0 +1,242 @@
+
+{
+    "name": "EPI",
+    "children": [
+        {
+            "name": "Environmental Health Objective Score",
+            "children": [
+                {
+                    "name": "Environmental Burden of Disease Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Environmental Risk Exposure Indicator",
+                            "size": 17010
+                        }
+                    ]
+                },
+                {
+                    "name": "Air Quality Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Indoor Air Pollution (COX,NOX, particulate matter) Indicator",
+                            "size": 17010
+                        },
+                        {
+                            "name": "Outdoor Air Pollution (COX,NOX, dust) Indicator",
+                            "size": 17010
+                        }
+                    ]
+                },
+                {
+                    "name": "Water and Sanitation Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Access to clean and safe drinking water Indicator",
+                            "size": 1983
+                        },
+                        {
+                            "name": "Access to Sanitation Indicator",
+                            "size": 2047
+                        }
+                    ]
+                },
+                {
+                    "name": "Environmental Nuisance Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Access to solid waste services Indicator",
+                            "size": 1375
+                        },
+                        {
+                            "name": "Noise Pollution Indicator",
+                            "size": 8746
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Ecosystem Vitality Objective Score",
+            "children": [
+                {
+                    "name": "Climate Change Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Green House Gases (GHG) emission per capita Indicator",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Industrial Green House Gases emission Index",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Green House Gases emission from Solid Waste Index",
+                            "size": 8932
+                        },
+                        {
+                            "name": "GHG Emissions from Transportation Index",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Sustainable Water Resources Management Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Water Stress Index",
+                            "size": 8932
+                        },
+                        {
+                            "name": "River Water Quality Index",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Marine Water Quality Index",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture, Livestock and Fisheries Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Nitrogen Use Efficiency Indicator",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Nitrogen Balance Indicator",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Fish Stocks Indicator",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Biodiversity and Habitat Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Species Protection (Marine and Terrestrial) Indicator",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Habitats Protection (Marine and Terrestrial) Indicator",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Invasive species Indicator",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Forests and woodlands Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Forest Cover Indicator",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Forest Protection Indicator",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Air Pollution Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Suplhide Oxides Concentration Indicator",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Nitrogen Oxide Concentration Indicator",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Energy Efficiency Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Renewable Energy Indicator",
+                            "size": 8932
+                        },
+                        {
+                            "name": "CO2 emission per KWH Indicator",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Sustainable Land Resource Use Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Extent with alkalinity/ acidity risks",
+                            "size": 8932
+                        },
+                        {
+                            "name": "Land degradation / Erosion",
+                            "size": 8932
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Socio Economic Sustainability Objective Score",
+            "children": [
+                {
+                    "name": "Environmental Behaviour and Awareness Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Environmental Education Indicator",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Poverty and Environment Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Population below poverty line dependent on natural resource for livelihood Indicator",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Gender and Environment Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Environment Gender Index",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Private Partnership Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Support of environmental projects through PPP arrangement Indicator",
+                            "size": 8932
+                        }
+                    ]
+                },
+                {
+                    "name": "Governance, Compliance and Enforcement Policy Category Score",
+                    "children": [
+                        {
+                            "name": "Environmental related policies formulated and legislations enacted Indicator",
+                            "size": 9354
+                        },
+                        {
+                            "name": "Complains and prosecution on environmental pollutio Indicator",
+                            "size": 1233
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

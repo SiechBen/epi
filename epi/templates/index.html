@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <style>
+
+        path {
+            stroke: #fff;
+        }
+
+    </style>
+
+    <link href="static/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+    <script src="static/jquery-3.2.1.min.js"></script>
+    <script src="static/select2.min.js"></script>
+    <script src="static/d3.v3.4.8.min.js"></script>
+    <div>
+        <select name="county" id="county" onchange="setUrl()">
+                <option value="Baringo">Baringo</option>
+                <option value="Bomet">Bomet</option>
+                <option value="Bungoma">Bungoma</option>
+                <option value="Busia">Busia</option>
+                <option value="ElgeyoMarakwet">Elgeyo Marakwet</option>
+                <option value="Embu">Embu</option>
+                <option value="Garissa">Garissa</option>
+                <option value="Homa Bay">Homa Bay</option>
+                <option value="Isiolo">Isiolo</option>
+                <option value="Kajiado">Kajiado</option>
+                <option value="Kakamega">Kakamega</option>
+                <option value="Kericho">Kericho</option>
+                <option value="Kiambu">Kiambu</option>
+                <option value="Kilifi">Kilifi</option>
+                <option value="Kirinyaga">Kirinyaga</option>
+                <option value="Kisii">Kisii</option>
+                <option value="Kisumu">Kisumu</option>
+                <option value="Kitui">Kitui</option>
+                <option value="Kwale">Kwale</option>
+                <option value="Laikipia">Laikipia</option>
+                <option value="Lamu">Lamu</option>
+                <option value="Machakos">Machakos</option>
+                <option value="Makueni">Makueni</option>
+                <option value="Mandera">Mandera</option>
+                <option value="Meru">Meru</option>
+                <option value="Migori">Migori</option>
+                <option value="Marsabit">Marsabit</option>
+                <option value="Mombasa">Mombasa</option>
+                <option value="Muranga">Muranga</option>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Nakuru">Nakuru</option>
+                <option value="Nandi">Nandi</option>
+                <option value="Narok">Narok</option>
+                <option value="Nyamira">Nyamira</option>
+                <option value="Nyandarua">Nyandarua</option>
+                <option value="Nyeri">Nyeri</option>
+                <option value="Samburu">Samburu</option>
+                <option value="Siaya">Siaya</option>
+                <option value="TaitaTaveta">Taita Taveta</option>
+                <option value="TanaRiver">Tana River</option>
+                <option value="Tharaka Nithi">Tharaka Nithi</option>
+                <option value="TransNzoia">Trans Nzoia</option>
+                <option value="Turkana">Turkana</option>
+                <option value="UasinGishu">Uasin Gishu</option>
+                <option value="Vihiga">Vihiga</option>
+                <option value="Wajir">Wajir</option>
+                <option value="WestPokot">West Pokot</option>
+                
+        </select>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#county').select2();
+        });
+        
+        generate("http://localhost:8000/data/");
+    
+        function setUrl(){
+            url = "data/"+document.getElementById("county").value+"/";
+            console.log(url);
+            generate(url);
+        }  
+
+        function generate(url) {
+             
+        var width = 960,
+                height = 700,
+                radius = (Math.min(width, height) / 2) - 10;
+
+        var formatNumber = d3.format(",d");
+
+        var x = d3.scale.linear()
+                .range([0, 2 * Math.PI]);
+
+        var y = d3.scale.sqrt()
+                .range([0, radius]);
+
+        var color = d3.scale.category20c();
+
+        var partition = d3.layout.partition()
+                .value(function (d) {
+                    console.log(this.value);
+                    if (d.value > 100) {
+                        return d.size * d.weight / 100;
+                    }
+                    
+                    return d.size;
+                });
+
+        var arc = d3.svg.arc()
+                .startAngle(function (d) {
+                    return Math.max(0, Math.min(2 * Math.PI, x(d.x)));
+                })
+                .endAngle(function (d) {
+                    return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx)));
+                })
+                .innerRadius(function (d) {
+                    return Math.max(0, y(d.y));
+                })
+                .outerRadius(function (d) {
+                    return Math.max(0, y(d.y + d.dy));
+                });
+
+        var svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
+
+        d3.json(url, function (error, root) {
+            if (error)
+                throw error;
+
+            root = root[0];
+            console.log(root)
+
+            svg.selectAll("path")
+                    .data(partition.nodes(root))
+                    .enter().append("path")
+                    .attr("d", arc)
+                    .style("fill", function (d) {
+                        return color((d.children ? d : d.parent).name);
+                    })
+                    .on("click", click)
+                    .append("title")
+                    .text(function (d) {
+                        return d.name + "\n" + formatNumber(d.value);
+                    });
+        });
+
+        function click(d) {
+            svg.transition()
+                    .duration(750)
+                    .tween("scale", function () {
+                        var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+                                yd = d3.interpolate(y.domain(), [d.y, 1]),
+                                yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+                        return function (t) {
+                            x.domain(xd(t));
+                            y.domain(yd(t)).range(yr(t));
+                        };
+                    })
+                    .selectAll("path")
+                    .attrTween("d", function (d) {
+                        return function () {
+                            return arc(d);
+                        };
+                    });
+        }
+
+        d3.select(self.frameElement).style("height", height + "px");
+
+         }
+    </script>
